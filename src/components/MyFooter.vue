@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-10-26 16:04:21
  * @LastEditors: 卢林
- * @LastEditTime: 2021-10-27 10:34:43
+ * @LastEditTime: 2021-10-27 14:53:32
  * @Descripttion: 文件描述
 -->
 <template>
@@ -11,7 +11,7 @@
       <input type="checkbox">
     </label>
     <span>
-      <span>已完成</span>全部
+      <span>已完成{{doneTotal}}</span>/全部{{todos.length}}
     </span>
     <button class="btn btn-danger">清除已完成任务</button>
   </div>
@@ -22,7 +22,12 @@ export default {
   name:'MyFooter',
   data() {
     return {
-     
+    }
+  },
+  props:['todos'],
+  computed:{
+    doneTotal(){
+      return this.todos.reduce((pre,todo)=> pre + (todo.done ? 1 : 0),0)
     }
   }
 }

@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-10-25 14:23:52
  * @LastEditors: 卢林
- * @LastEditTime: 2021-10-27 14:30:13
+ * @LastEditTime: 2021-10-27 14:51:02
  * @Descripttion: 文件描述
 -->
 <template>
@@ -13,7 +13,7 @@
     :checkTodo='checkTodo'
     :deleteTodo='deleteTodo'
     ></MyList>
-    <MyFooter></MyFooter>
+    <MyFooter :todos='todos'></MyFooter>
 	</div>
 </template>
 
