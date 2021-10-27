@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-10-25 14:23:52
  * @LastEditors: 卢林
- * @LastEditTime: 2021-10-27 16:53:48
+ * @LastEditTime: 2021-10-27 16:44:27
  * @Descripttion: 文件描述
 -->
 <template>
@@ -33,7 +33,11 @@
 		components:{MyHeader,MyList,MyFooter},
 		data() {
 			return {
-				todos:JSON.parse(localStorage.getItem('todos'))  || []
+				todos:[
+          {id:'001',title:'抽烟',done:true},
+					{id:'002',title:'喝酒',done:false},
+					{id:'003',title:'开车',done:true}
+        ]
 			}
 		},
     methods: {
@@ -67,14 +71,6 @@
         })
       }
     },
-    watch:{
-      todos:{
-        deep:true,
-        handler(value){
-          localStorage.setItem('todos',JSON.stringify(value))
-        }
-      }
-    }
 	
 	}
 </script>
