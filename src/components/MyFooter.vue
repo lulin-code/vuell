@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-10-26 16:04:21
  * @LastEditors: 卢林
- * @LastEditTime: 2021-10-28 15:16:44
+ * @LastEditTime: 2021-10-27 16:14:46
  * @Descripttion: 文件描述
 -->
 <template>
@@ -24,7 +24,7 @@ export default {
     return {
     }
   },
-  props:['todos'],
+  props:['todos','checkAllTodo','clearAllTodo'],
   computed:{
     //总数
 			total(){
@@ -38,13 +38,13 @@ export default {
         return this.doneTotal === this.total && this.total > 0
       },
       set(value){
-        this.$emit('checkAllTodo',value)
+        this.checkAllTodo(value)
       }
     }
   },
   methods: {
     clearAll(){
-      this.$emit('clearAllTodo')
+      this.clearAllTodo()
     },
 
   },

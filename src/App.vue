@@ -2,23 +2,19 @@
  * @Author: 卢林
  * @Date: 2021-10-25 14:23:52
  * @LastEditors: 卢林
- * @LastEditTime: 2021-10-28 15:16:53
+ * @LastEditTime: 2021-10-28 17:36:46
  * @Descripttion: 文件描述
 -->
 <template>
 	<div>
-    <MyHeader @addTodo='add'></MyHeader>
-    
+    <MyHeader :addTodo='add'></MyHeader>
     <MyList 
     :todos='todos' 
-    :checkTodo='checkTodo'
-    :deleteTodo='deleteTodo'
     ></MyList>
-
     <MyFooter 
     :todos='todos'
-    @checkAllTodo='checkAllTodo'
-    @clearAllTodo='clearAllTodo'
+    :checkAllTodo='checkAllTodo'
+    :clearAllTodo='clearAllTodo'
     ></MyFooter>
 	</div>
 </template>
@@ -73,6 +69,14 @@
         })
       }
     },
+    mounted() {
+      this.$bus.$on('checkTodo',this.checkTodo)
+      this.$bus.$on('deleteTodo',this.deleteTodo)
+    },
+    beforeDestroy() {
+      this.$bus.$off('checkTodo',this.checkTodo)
+      this.$bus.$off('deleteTodo',this.deleteTodo)
+    }
 	
 	}
 </script>

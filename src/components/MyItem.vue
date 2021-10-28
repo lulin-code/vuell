@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-10-27 10:17:55
  * @LastEditors: 卢林
- * @LastEditTime: 2021-10-27 14:30:16
+ * @LastEditTime: 2021-10-28 17:48:49
  * @Descripttion: 文件描述
 -->
 <template>
@@ -18,17 +18,18 @@
 <script>
 export default {
   name:'MyItem',
-  props:['todo','checkTodo','deleteTodo'],
+  props:['todo'],
   methods: {
     handleCheck(id){
-      this.checkTodo(id)
+      this.$bus.$emit('checkTodo',id)
     },
     handleDelete(id){
       if (confirm('确定删除吗？')) {
-        this.deleteTodo(id)
+        this.$bus.$emit('deleteTodo',id)
       }
     }
   },
+
   
 }
 </script>

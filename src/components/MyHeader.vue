@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-08-11 08:47:54
  * @LastEditors: 卢林
- * @LastEditTime: 2021-10-28 15:14:45
+ * @LastEditTime: 2021-10-27 11:42:05
  * @Descripttion: 文件描述
 -->
 <template>
@@ -15,12 +15,13 @@
   import {nanoid} from 'nanoid'
 	export default {
 		name:'MyHeader',
+    props:['addTodo'],
     methods: {
       add(e){
         let ev = e.target.value
         if (!ev.trim()) return alert('输入不能为空')
         const todoObj = {id:nanoid(),title:ev,done:false}
-        this.$emit('addTodo',todoObj)
+        this.addTodo(todoObj)
         e.target.value = ''
       }
     }
