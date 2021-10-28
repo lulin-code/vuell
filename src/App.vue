@@ -2,79 +2,45 @@
  * @Author: 卢林
  * @Date: 2021-10-25 14:23:52
  * @LastEditors: 卢林
- * @LastEditTime: 2021-10-27 16:53:48
- * @Descripttion: 文件描述
+ * @LastEditTime: 2021-10-28 10:15:15
+ * @Descripttion: 自定义组件
 -->
 <template>
 	<div>
-    <MyHeader :addTodo='add'></MyHeader>
-    <MyList 
-    :todos='todos' 
-    :checkTodo='checkTodo'
-    :deleteTodo='deleteTodo'
-    ></MyList>
-    <MyFooter 
-    :todos='todos'
-    :checkAllTodo='checkAllTodo'
-    :clearAllTodo='clearAllTodo'
-    ></MyFooter>
+    <School :getSchoolName='getSchoolName' ></School><br>
+    <!-- 通过父组件给子组件绑定一个自定义事件实现：子给父传递数据（使用@或者v-on） -->
+    <!-- <Student @ll='getStudent'></Student> -->
+
+    <!-- 通过父组件给子组件绑定一个自定义事件实现：子给父传递数据（第二种写法，使用ref） -->
+    <Student ref="student"></Student>
+
 	</div>
 </template>
 
 <script>
 	//引入School组件
-	import MyHeader from '../src/components/MyHeader.vue'
-  import MyList from '../src/components/MyList.vue'
-  import MyFooter from '../src/components/MyFooter.vue'
-
+	import Student from './components/Student'
+  import School from './components/School'
 
 	export default {
 		name:'App',
-		components:{MyHeader,MyList,MyFooter},
+		components:{Student,School},
 		data() {
 			return {
-				todos:JSON.parse(localStorage.getItem('todos'))  || []
+				msg:'欢迎学习Vue！'
 			}
 		},
     methods: {
-      // 添加一个todo
-      add(todoObj){
-       this.todos.unshift(todoObj)
+      getSchoolName(name){
+        console.log('APP收到了公司名称：',name)
       },
-      // 勾选或者取消勾选todo
-      checkTodo(id){
-        this.todos.forEach((todo)=>{
-          if (todo.id === id) {
-            todo.done = !todo.done
-          }
-        })
-      },
-      deleteTodo(id){
-      this.todos = this.todos.filter((todo)=>{
-         return todo.id !== id
-        })
-      },
-      // 全选or取消全选
-      checkAllTodo(done){
-        this.todos.forEach((todo)=> {
-          todo.done = done
-        })
-      },
-      // 清除所有已经完成的todo
-      clearAllTodo(){
-        this.todos = this.todos.filter((todo)=> {
-          return !todo.done
-        })
+      getStudent(name,...prams){
+        console.log('APP收到了学生名称：',name,prams)
       }
     },
-    watch:{
-      todos:{
-        deep:true,
-        handler(value){
-          localStorage.setItem('todos',JSON.stringify(value))
-        }
-      }
-    }
+    mounted() {
+      this.$refs.student.$on('ll',this.getStudent)
+    },
 	
 	}
 </script>
