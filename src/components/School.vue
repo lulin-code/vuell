@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-10-26 16:04:21
  * @LastEditors: 卢林
- * @LastEditTime: 2021-10-29 11:40:41
+ * @LastEditTime: 2021-10-29 11:46:50
  * @Descripttion: 消息订阅发布
 -->
 <template>
@@ -25,12 +25,13 @@ export default {
     // this.$bus.$on('hello',(data)=>{
     //   console.log('我是School组件，收到了数据',data)
     // })
-    pubsub.subscribe('hello',(msgName,data)=> {
+  this.pubId = pubsub.subscribe('hello',(msgName,data)=> {
       console.log('我是School组件，收到了数据',data)
     })
   },
   beforeDestroy() {
     // this.$bus.$off('hello')
+    pubsub.unsubscribe(this.pubId)
   },
 }
 </script>
