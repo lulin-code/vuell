@@ -2,21 +2,23 @@
  * @Author: 卢林
  * @Date: 2021-08-11 08:48:26
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-02 17:00:45
+ * @LastEditTime: 2021-11-02 17:43:36
  * @Descripttion: 文件描述
 -->
 <template>
 	<div id="root">
 		<Test></Test>
+    <Test2></Test2>
 	</div>
 </template>
 
 <script>
 	import Test from './components/Test'
+  import Test2 from './components/Test2.vue'
 
 	export default {
 		name:'App',
-		components:{Test}
+		components:{Test,Test2}
 	}
 </script>
 
