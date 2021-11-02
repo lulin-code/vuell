@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-11-02 16:55:55
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-02 17:42:43
+ * @LastEditTime: 2021-11-02 17:48:09
  * @Descripttion: 动画效果
 -->
 <template>
@@ -10,7 +10,7 @@
     <button @click="isShow = !isShow">显示/隐藏</button>
     <!-- appear首次加载显示动画 -->
     <transition-group name="ll" appear>
-     <h1 v-show="isShow" key="1">你好</h1> 
+     <h1 v-show="!isShow" key="1">你好</h1> 
      <h1 v-show="isShow" key="2">尚硅谷！</h1>
     </transition-group>
   </div>
