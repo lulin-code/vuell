@@ -1,8 +1,8 @@
 <!--
  * @Author: 卢林
- * @Date: 2021-10-29 13:49:17
+ * @Date: 2021-08-11 08:48:26
  * @LastEditors: 卢林
- * @LastEditTime: 2021-10-29 13:56:47
+ * @LastEditTime: 2021-11-02 16:31:56
  * @Descripttion: 文件描述
 -->
 <template>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import pubsub from 'pubsub-js'
+	import pubsub from 'pubsub-js'
 	export default {
 		name:'MyItem',
 		//声明接收todo
@@ -36,10 +36,10 @@ import pubsub from 'pubsub-js'
 					//通知App组件将对应的todo对象删除
 					// this.deleteTodo(id)
 					// this.$bus.$emit('deleteTodo',id)
-          pubsub.publish('deleteTodo',id)
+					pubsub.publish('deleteTodo',id)
 				}
 			}
-		}
+		},
 	}
 </script>
 

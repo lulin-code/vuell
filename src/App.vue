@@ -1,76 +1,22 @@
+<!--
+ * @Author: 卢林
+ * @Date: 2021-08-11 08:48:26
+ * @LastEditors: 卢林
+ * @LastEditTime: 2021-11-02 17:00:45
+ * @Descripttion: 文件描述
+-->
 <template>
 	<div id="root">
-		<div class="todo-container">
-			<div class="todo-wrap">
-				<MyHeader @addTodo="addTodo"/>
-				<MyList :todos="todos"/>
-				<MyFooter :todos="todos" @checkAllTodo="checkAllTodo" @clearAllTodo="clearAllTodo"/>
-			</div>
-		</div>
+		<Test></Test>
 	</div>
 </template>
 
 <script>
-  import pubsub from 'pubsub-js'
-	import MyHeader from './components/MyHeader'
-	import MyList from './components/MyList'
-	import MyFooter from './components/MyFooter.vue'
+	import Test from './components/Test'
 
 	export default {
 		name:'App',
-		components:{MyHeader,MyList,MyFooter},
-		data() {
-			return {
-				//由于todos是MyHeader组件和MyFooter组件都在使用，所以放在App中（状态提升）
-				todos:JSON.parse(localStorage.getItem('todos')) || []
-			}
-		},
-		methods: {
-			//添加一个todo
-			addTodo(todoObj){
-				this.todos.unshift(todoObj)
-			},
-			//勾选or取消勾选一个todo
-			checkTodo(id){
-				this.todos.forEach((todo)=>{
-					if(todo.id === id) todo.done = !todo.done
-				})
-			},
-			//删除一个todo
-			deleteTodo(_,id){
-				this.todos = this.todos.filter( todo => todo.id !== id )
-			},
-			//全选or取消全选
-			checkAllTodo(done){
-				this.todos.forEach((todo)=>{
-					todo.done = done
-				})
-			},
-			//清除所有已经完成的todo
-			clearAllTodo(){
-				this.todos = this.todos.filter((todo)=>{
-					return !todo.done
-				})
-			}
-		},
-		watch: {
-			todos:{
-				deep:true,
-				handler(value){
-					localStorage.setItem('todos',JSON.stringify(value))
-				}
-			}
-		},
-		mounted() {
-			this.$bus.$on('checkTodo',this.checkTodo)
-			// this.$bus.$on('deleteTodo',this.deleteTodo)
-      this.pubId = pubsub.subscribe('deleteTodo',this.deleteTodo)
-		},
-		beforeDestroy() {
-			this.$bus.$off('checkTodo')
-			// this.$bus.$off('deleteTodo')
-      pubsub.unsubscribe(this.pubId)
-		},
+		components:{Test}
 	}
 </script>
 
@@ -95,6 +41,12 @@
 		color: #fff;
 		background-color: #da4f49;
 		border: 1px solid #bd362f;
+	}
+	.btn-edit {
+		color: #fff;
+		background-color: skyblue;
+		border: 1px solid rgb(103, 159, 180);
+		margin-right: 5px;
 	}
 	.btn-danger:hover {
 		color: #fff;
