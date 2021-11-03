@@ -1,24 +1,18 @@
 <template>
 	<div id="root">
-		<div class="todo-container">
-			<div class="todo-wrap">
-				<MyHeader @addTodo="addTodo"/>
-				<MyList :todos="todos"/>
-				<MyFooter :todos="todos" @checkAllTodo="checkAllTodo" @clearAllTodo="clearAllTodo"/>
-			</div>
-		</div>
+		<Search></Search>
+    <List></List>
 	</div>
 </template>
 
 <script>
 	import pubsub from 'pubsub-js'
-	import MyHeader from './components/MyHeader'
-	import MyList from './components/MyList'
-	import MyFooter from './components/MyFooter'
+  import List from './components/List.vue'
+  import Search from './components/Search'
 
 	export default {
 		name:'App',
-		components:{MyHeader,MyList,MyFooter},
+		components:{Search,List},
 		data() {
 			return {
 				//由于todos是MyHeader组件和MyFooter组件都在使用，所以放在App中（状态提升）
