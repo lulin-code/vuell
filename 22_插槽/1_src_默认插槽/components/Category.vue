@@ -2,15 +2,14 @@
  * @Author: 卢林
  * @Date: 2021-11-05 17:07:47
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-08 13:58:50
- * @Descripttion: 具名插槽
+ * @LastEditTime: 2021-11-08 11:28:28
+ * @Descripttion: 文件描述
 -->
 <template>
   <div class="category">
     <h3>{{title}}</h3>
     <!-- 定义一个插槽（挖个坑，等着组件的使用者进行填充） -->
-    <slot name="center">我是一些默认值，当使用者没有传递具体结构时，我会出现1</slot>
-    <slot name="footer">我是一些默认值，当使用者没有传递具体结构时，我会出现2</slot>
+    <slot>我是一些默认值，当使用者没有传递具体结构时，我会出现</slot>
   </div>
 </template>
 
