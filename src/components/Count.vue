@@ -2,12 +2,12 @@
  * @Author: 卢林
  * @Date: 2021-11-10 16:34:50
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-11 10:17:14
+ * @LastEditTime: 2021-11-12 17:38:41
  * @Descripttion: 文件描述
 -->
 <template>
 	<div>
-    <h1>当前求和为：{{sum}}</h1>
+    <h1>当前求和为：{{$store.state.sum}}</h1>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -31,20 +31,16 @@
     },
     methods: {
       increment(){
-       this.sum = this.sum + this.n
+       this.$store.commit('JIA',this.n)
       },
       decrement(){
-       this.sum -= this.n
+       this.$store.commit('JIAN',this.n)
       },
       incrementOdd(){
-        if (this.sum % 2) {
-          this.sum += this.n
-        }
+       this.$store.dispatch('jiaOdd',this.n)
       },
       incrementWait(){
-        setTimeout(() => {
-          this.sum += this.n
-        }, 500);
+       this.$store.dispatch('jiaWait',this.n)
       }
     },
 	}
