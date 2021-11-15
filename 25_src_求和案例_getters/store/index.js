@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-11-12 17:26:16
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-15 14:45:19
+ * @LastEditTime: 2021-11-15 14:22:59
  * @Descripttion: 文件描述
  */
 // 该文件用于创建Vuex中最为核心的store
@@ -37,9 +37,7 @@ const mutations = {
 
 // 准备state---用于存储数据
 const state = {
-  sum:0,
-  school: '尚硅谷',
-  subject: '前端'
+  sum:0
 }
 
 const getters = {

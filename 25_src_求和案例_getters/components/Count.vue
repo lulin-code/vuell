@@ -2,14 +2,13 @@
  * @Author: 卢林
  * @Date: 2021-11-10 16:34:50
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-15 14:58:03
+ * @LastEditTime: 2021-11-15 14:23:01
  * @Descripttion: 文件描述
 -->
 <template>
 	<div>
-    <h1>当前求和为：{{sum}}</h1>
-    <h2>当前求和放大10倍为：{{bigSum}}</h2>
-    <h3>我在{{school}},学习{{subject}}</h3>
+    <h1>当前求和为：{{$store.state.sum}}</h1>
+    <h2>当前求和放大10倍为：{{$store.getters.bigSum}}</h2>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -23,43 +22,13 @@
 </template>
 
 <script>
-// import {mapState,mapGetters} from 'vuex'
 	export default {
 		name:'Count',
     data() {
       return {
+        sum:0,
         n:1
       }
-    },
-    computed:{
-      // 自己写计算属性
-      sum(){
-        return this.$store.state.sum
-      },
-      school(){
-        return this.$store.state.school
-      },
-      subject(){
-        return this.$store.state.subject
-      },
-
-
-      // 借助mapState生成计算属性，从state中读取数据（对象写法）
-      // ...mapState({sum:'sum',school:'school',subject:'subject'}),
-
-      // 借助mapState生成计算属性，从state中读取数据（数据写法）
-      // ...mapState(['sum','school','subject']),
-
-
-      // **********************************************************
-
-
-      bigSum(){
-        return this.$store.getters.bigSum
-      }
-      // ...mapGetters({bigSum:'bigSum'})
-      // ...mapGetters(['bigSum'])
-
     },
     methods: {
       increment(){
@@ -74,9 +43,6 @@
       incrementWait(){
        this.$store.dispatch('jiaWait',this.n)
       }
-    },
-    mounted() {
-      
     },
 	}
 </script>
