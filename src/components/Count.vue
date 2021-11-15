@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-11-10 16:34:50
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-15 16:21:16
+ * @LastEditTime: 2021-11-15 18:04:58
  * @Descripttion: 文件描述
 -->
 <template>
@@ -34,15 +34,16 @@ import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
     },
     computed:{
       // 借助mapState生成计算属性，从state中读取数据（数据写法）
-      ...mapState(['sum','school','subject','personList']),
-      ...mapGetters(['bigSum'])
+      ...mapState('countAbout',['sum','school','subject']),
+      ...mapState('personAbout',['personList']),
+      //借助mapGetters生成计算属性，从getters中读取数据。（数组写法）
+			...mapGetters('countAbout',['bigSum'])
     },
     methods: {
-
-      ...mapMutations({increment:'JIA',decrement:'JIAN'}),
-
-      //借助mapActions生成对应的方法，方法中会调用dispatch去联系actions(对象写法)
-      ...mapActions({incrementOdd:'jiaOdd',incrementWait:'jiaWait'})
+      //借助mapMutations生成对应的方法，方法中会调用commit去联系mutations(对象写法)
+			...mapMutations('countAbout',{increment:'JIA',decrement:'JIAN'}),
+			//借助mapActions生成对应的方法，方法中会调用dispatch去联系actions(对象写法)
+			...mapActions('countAbout',{incrementOdd:'jiaOdd',incrementWait:'jiaWait'})
     },
 	}
 </script>
