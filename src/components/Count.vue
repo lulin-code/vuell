@@ -2,12 +2,13 @@
  * @Author: 卢林
  * @Date: 2021-11-10 16:34:50
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-12 17:38:41
+ * @LastEditTime: 2021-11-15 14:23:01
  * @Descripttion: 文件描述
 -->
 <template>
 	<div>
     <h1>当前求和为：{{$store.state.sum}}</h1>
+    <h2>当前求和放大10倍为：{{$store.getters.bigSum}}</h2>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>

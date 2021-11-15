@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-11-12 17:26:16
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-12 17:36:00
+ * @LastEditTime: 2021-11-15 14:22:59
  * @Descripttion: 文件描述
  */
 // 该文件用于创建Vuex中最为核心的store
@@ -40,6 +40,12 @@ const state = {
   sum:0
 }
 
+const getters = {
+  bigSum(state) {
+    return state.sum * 10
+  }
+}
+
 export default new Vuex.Store({
-  actions,mutations,state
+  actions, mutations, state, getters
 })
