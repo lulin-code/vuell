@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-11-16 16:07:36
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-18 15:13:26
+ * @LastEditTime: 2021-11-18 16:20:28
  * @Descripttion: 文件描述
  */
 // 该文件专门用于创建整个应用的路由器
@@ -33,6 +33,7 @@ export default new VueRouter({
           path:'message',
           component: Message,
           children:[{
+            name:'detail-n',
             path:'detail',
             component: Detail
           }]

@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-11-16 18:17:21
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-18 15:10:22
+ * @LastEditTime: 2021-11-18 16:20:26
  * @Descripttion: 文件描述
 -->
 <template>
@@ -11,7 +11,7 @@
       <li v-for="m in messageList" :key="m.id">
         <router-link
           :to="{
-            path: '/home/message/detail',
+            name: 'detail-n',
             query: {
               id: m.id,
               title: m.title,
