@@ -2,7 +2,7 @@
  * @Author: 卢林
  * @Date: 2021-11-16 18:17:21
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-18 16:20:26
+ * @LastEditTime: 2021-11-18 16:37:13
  * @Descripttion: 文件描述
 -->
 <template>
@@ -12,7 +12,7 @@
         <router-link
           :to="{
             name: 'detail-n',
-            query: {
+            params: {
               id: m.id,
               title: m.title,
             },
