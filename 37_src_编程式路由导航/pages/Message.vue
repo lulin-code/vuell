@@ -1,10 +1,3 @@
-<!--
- * @Author: 卢林
- * @Date: 2021-11-22 11:45:04
- * @LastEditors: 卢林
- * @LastEditTime: 2021-11-22 11:51:52
- * @Descripttion: 文件描述
--->
 <template>
 	<div>
 		<ul>
@@ -22,8 +15,8 @@
 				}">
 					{{m.title}}
 				</router-link>
-        <button @click="pushShow(m)">push查看</button>
-        <button @click="replaceShow(m)">replace查看</button>
+				<button @click="pushShow(m)">push查看</button>
+				<button @click="replaceShow(m)">replace查看</button>
 			</li>
 		</ul>
 		<hr>
@@ -43,25 +36,25 @@
 				]
 			}
 		},
-    methods: {
-      pushShow(m){
-        this.$router.push({
-          name:'xiangqing',
-          query:{
-            id:m.id,
-            title:m.title
-          }
-        })
-      },
-      replaceShow(m){
-        this.$router.replace({
-          name:'xiangqing',
-          query:{
-            id:m.id,
-            title:m.title
-          }
-        })
-      }
-    },
+		methods: {
+			pushShow(m){
+				this.$router.push({
+					name:'xiangqing',
+					query:{
+						id:m.id,
+						title:m.title
+					}
+				})
+			},
+			replaceShow(m){
+				this.$router.replace({
+					name:'xiangqing',
+					query:{
+						id:m.id,
+						title:m.title
+					}
+				})
+			}
+		},
 	}
 </script>
