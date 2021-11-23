@@ -2,11 +2,12 @@
  * @Author: 卢林
  * @Date: 2021-11-22 18:31:02
  * @LastEditors: 卢林
- * @LastEditTime: 2021-11-23 10:13:47
+ * @LastEditTime: 2021-11-23 10:19:01
  * @Descripttion: 文件描述
 -->
 <template>
   <ul>
+    <li :style="{opacity}">欢迎学习Vue</li>
     <li>news001 <input type="text" /></li>
     <li>news002 <input type="text" /></li>
     <li>news003 <input type="text" /></li>
@@ -15,6 +16,22 @@
 
 <script>
 export default {
-  name: 'News'
+  name: 'News',
+  data() {
+    return {
+      opacity:1
+    }
+  },
+  activated(){
+    this.timer = setInterval(() => {
+      this.opacity -= 0.01
+      if (this.opacity <= 0) {
+        this.opacity = 1
+      }
+    }, 15);
+  },
+  deactivated() {
+    clearInterval(this.timer)
+  },
 }
 </script>
